@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AQVApp.Views.LoginPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:prism="http://prismlibrary.com"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    NavigationPage.HasNavigationBar="False">
+    <StackLayout BackgroundColor="White">
+        <Image
+            Margin="0,50,0,0"
+            HeightRequest="200"
+            HorizontalOptions="Center"
+            Source="LoginImage.png" />
+        <Label
+            Margin="0,30,0,0"
+            FontAttributes="Bold"
+            FontFamily="{StaticResource Poppins}"
+            FontSize="17"
+            HorizontalTextAlignment="Center"
+            Text="Nós planejaremos tudo para você!"
+            TextColor="{StaticResource Lilas}" />
+        <Label
+            Margin="50,10,40,0"
+            FontFamily="{StaticResource Avenir}"
+            FontSize="14"
+            HorizontalTextAlignment="Start"
+            Text="Sua saúde reflete na sua segurança no trânsito, garantindo um retorno seguro para quem te espera em casa." />
+
+        <!--  google button  -->
+        <pancake:PancakeView
+            Margin="50,40,50,10"
+            BorderColor="{StaticResource Lilas}"
+            BorderThickness="5">
+            <StackLayout HeightRequest="48" Orientation="Horizontal">
+                <Image
+                    Margin="20,0,0,0"
+                    Source="google.png"
+                    VerticalOptions="CenterAndExpand" />
+                <Label
+                    Margin="20,0,0,0"
+                    FontFamily="{StaticResource Avenir}"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Start"
+                    Text="Continuar com o Google"
+                    VerticalOptions="CenterAndExpand" />
+            </StackLayout>
+        </pancake:PancakeView>
+
+        <!--  facebook button  -->
+        <pancake:PancakeView
+            Margin="50,15,50,10"
+            BorderColor="{StaticResource Lilas}"
+            BorderThickness="5"
+            HeightRequest="48">
+            <StackLayout Margin="0,0,0,0" HeightRequest="48">
+                <Frame
+                    Padding="0,0,0,0"
+                    IsClippedToBounds="True"
+                    VerticalOptions="FillAndExpand">
+                    <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+                        <Image
+                            Margin="15,0,0,0"
+                            Source="facebook.png"
+                            VerticalOptions="Center" />
+                        <Label
+                            Margin="20,0,0,0"
+                            FontFamily="{StaticResource Avenir}"
+                            Text="Continuar com o Facebook"
+                            VerticalOptions="Center" />
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnLoginWithFacebookCommand}" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </StackLayout>
+        </pancake:PancakeView>
+
+        <Label
+            FontAttributes="Bold"
+            FontFamily="{StaticResource Avenir}"
+            FontSize="14"
+            HorizontalOptions="Center"
+            Text="OU"
+            TextColor="#7C7C7C" />
+
+        <!--  facebook button  -->
+        <pancake:PancakeView
+            Margin="50,15,50,10"
+            BackgroundColor="{StaticResource Lilas}"
+            HeightRequest="48">
+            <StackLayout Orientation="Horizontal">
+                <Label
+                    FontFamily="{StaticResource Avenir}"
+                    FontSize="14"
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="Continuar com E-mail"
+                    TextColor="White"
+                    VerticalTextAlignment="Center" />
+            </StackLayout>
+        </pancake:PancakeView>
+
+        <Label
+            Margin="50,0,0,0"
+            FontSize="10"
+            HeightRequest="35"
+            Text="Ao continuar, você concorda com os Termos de Uso e a Política de Privacidade do App."
+            TextColor="#7C7C7C" />
+    </StackLayout>
+
+</ContentPage>

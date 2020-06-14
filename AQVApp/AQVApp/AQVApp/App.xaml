@@ -1,11 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="http://prismlibrary.com"
-             x:Class="AQVApp.App">
-  <Application.Resources>
+<prism:PrismApplication
+    x:Class="AQVApp.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="http://prismlibrary.com">
+    <Application.Resources>
+        <ResourceDictionary>
+            <OnPlatform x:Key="Poppins" x:TypeArguments="x:String">
+                <On Platform="Android">poppins-bold.ttf#Poppins Bold</On>
+                <On Platform="iOS">Poppins Bold</On>
+            </OnPlatform>
 
-    <!-- Application resource dictionary -->
+            <OnPlatform x:Key="Avenir" x:TypeArguments="x:String">
+                <On Platform="Android">avenir-lt-std-35-light.otf#Avenir Lt</On>
+                <On Platform="iOS">Avenir Lt</On>
+            </OnPlatform>
+        </ResourceDictionary>
+        <Color x:Key="Lilas">#534ADF</Color>
+        <!--  Application resource dictionary  -->
 
-  </Application.Resources>
+    </Application.Resources>
 </prism:PrismApplication>

@@ -27,4 +27,8 @@
   <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
     <item name="colorAccent">#FF4081</item>
   </style>
+  
+  <string name="facebook_app_name">XamarinLeandro</string>
+  <string name="facebook_app_id">1796196397363237</string>
+  <string name="fb_login_protocol_scheme">fb1796196397363237</string>
 </resources>

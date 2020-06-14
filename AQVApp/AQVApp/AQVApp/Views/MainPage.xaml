@@ -1,11 +1,42 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AQVApp.Views.MainPage"
-             Title="{Binding Title}">
+<ContentPage
+    x:Class="AQVApp.Views.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    Title="{Binding Title}">
 
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="Welcome to Xamarin Forms and Prism!" />
+        <StackLayout Orientation="Horizontal">
+            <Label FontSize="Medium" Text="Nome: " />
+            <Label FontSize="Medium" Text="{Binding Name}" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label FontSize="Medium" Text="Id: " />
+            <Label FontSize="Medium" Text="{Binding Id}" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label FontSize="Medium" Text="Email: " />
+            <Label FontSize="Medium" Text="{Binding Email}" />
+        </StackLayout>
+
+        <Label FontSize="Medium" Text="Foto: " />
+
+        <pancake:PancakeView
+            BorderColor="Black"
+            BorderThickness="5"
+            CornerRadius="50"
+            HeightRequest="100"
+            HorizontalOptions="Center"
+            IsClippedToBounds="True"
+            WidthRequest="100">
+            <Image
+                HorizontalOptions="FillAndExpand"
+                Source="{Binding Image}"
+                VerticalOptions="FillAndExpand" />
+        </pancake:PancakeView>
     </StackLayout>
 
 </ContentPage>
