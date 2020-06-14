@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace AQVApp.ViewModels
 {
@@ -18,6 +20,8 @@ namespace AQVApp.ViewModels
             public string Title { get; set; }
             public string Description { get; set; }
         }
+
+        private NetworkAuthData _data;
 
         private string _helloString;
         public string HelloString
@@ -33,24 +37,37 @@ namespace AQVApp.ViewModels
             set { SetProperty(ref _bubbles, value); }
         }
 
+        private INavigationService _navigationService;
+        public ICommand NewPlanningCommand { get; set; }
         public DashboardPageViewModel(INavigationService navigationService)
         {
             Bubbles = new ObservableCollection<BubbleHeader>()
             {
-                new BubbleHeader{Icon="marker.png", Title = "158 km", Description="Distância Percorrida"},
-                new BubbleHeader{Icon="check.png", Title = "3", Description="Viagens Finalizadas"},
+                new BubbleHeader{Icon="Marker", Title = "0 km", Description="Distância Percorrida", IconColor="#00C1D4"},
+                new BubbleHeader{Icon="Check", Title = "0", Description="Viagens Finalizadas", IconColor="#33AC2E"},
             };
+            NewPlanningCommand = new Command(GoToPlanningScreenAsync);
+            _navigationService = navigationService;
         }
 
         public void OnNavigatedFrom(INavigationParameters parameters)
         {
-            throw new NotImplementedException();
         }
 
         public void OnNavigatedTo(INavigationParameters parameters)
         {
             var data = parameters?.GetValue<NetworkAuthData>("NetworkAuthData");
-            _helloString = $"Olá, {data?.Name}!";
+            _data = data;
+            HelloString = $"Olá, {data?.Name}!";
+        }
+
+        private async void GoToPlanningScreenAsync()
+        {
+            var navigationParams = new NavigationParameters
+                            {
+                                { "NetworkAuthData", _data }
+                            };
+            await _navigationService.NavigateAsync("PlanningPage", navigationParams);
         }
     }
 }

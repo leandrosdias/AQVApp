@@ -4,11 +4,93 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:prism="http://prismlibrary.com"
-    prism:ViewModelLocator.AutowireViewModel="True">
+    prism:ViewModelLocator.AutowireViewModel="True"
+    NavigationPage.HasNavigationBar="False">
 
-    <StackLayout>
-        <maps:Map x:Name="map" VerticalOptions="FillAndExpand" />
-        <Button Clicked="Button_Clicked" Text="Ir" />
-    </StackLayout>
+    <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="400" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <maps:Map x:Name="map" Grid.Row="0" />
+        <StackLayout
+            Grid.Row="1"
+            Margin="20,40,0,0"
+            Orientation="Horizontal">
+            <Label
+                FontFamily="{StaticResource Avenir}"
+                FontSize="16"
+                Text="Notificações"
+                TextColor="#979797" />
+            <AbsoluteLayout
+                Margin="5,10,40,7"
+                BackgroundColor="#2E5BFF"
+                HorizontalOptions="FillAndExpand"
+                Opacity="0.08" />
+        </StackLayout>
+        <StackLayout Grid.Row="2">
+            <CollectionView
+                Margin="20,20,20,0"
+                HeightRequest="150"
+                ItemsSource="{Binding Notifications}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="20" Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <pancake:PancakeView
+                            Margin="10,10,10,10"
+                            BackgroundColor="Lavender"
+                            HeightRequest="41">
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    Margin="10,10,10,10"
+                                    FontAttributes="Bold"
+                                    FontFamily="{StaticResource Avenir}"
+                                    FontSize="20"
+                                    HorizontalTextAlignment="Start"
+                                    Text="{Binding Hour}"
+                                    VerticalTextAlignment="Center"
+                                    WidthRequest="90" />
+                                <Label
+                                    FontFamily="{StaticResource Avenir}"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding Description}"
+                                    VerticalTextAlignment="Center"
+                                    WidthRequest="400" />
+                            </StackLayout>
+                        </pancake:PancakeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <pancake:PancakeView
+                Margin="20,30,20,0"
+                BackgroundColor="#6C63FF"
+                BorderColor="#6C63FF"
+                BorderThickness="1"
+                CornerRadius="4"
+                IsClippedToBounds="True">
+                <Frame BackgroundColor="#6C63FF">
+                    <Label
+                        BackgroundColor="#6C63FF"
+                        FontFamily="{StaticResource Avenir}"
+                        FontSize="20"
+                        HorizontalTextAlignment="Center"
+                        Text="Voltar"
+                        TextColor="White" />
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </Frame.GestureRecognizers>
+
+                </Frame>
+            </pancake:PancakeView>
+        </StackLayout>
+    </Grid>
+
+
 </ContentPage>

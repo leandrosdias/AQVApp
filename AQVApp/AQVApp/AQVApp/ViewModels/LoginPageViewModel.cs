@@ -30,13 +30,6 @@ namespace AQVApp.ViewModels
         {
             try
             {
-                var navigationParams = new NavigationParameters
-                            {
-                                { "NetworkAuthData", new NetworkAuthData{Name = "Leandro" } }
-                            };
-                await _navigationService.NavigateAsync("DashboardPage", navigationParams);
-                return;
-
                 if (_facebookService.IsLoggedIn)
                 {
                     _facebookService.Logout();
@@ -48,26 +41,32 @@ namespace AQVApp.ViewModels
                 {
                     if (e == null) return;
 
+                    var socialLoginData = new NetworkAuthData
+                    {
+                        Name = $"Cleiton",
+                    };
+                    var navigationParams = new NavigationParameters
+                            {
+                                { "NetworkAuthData", socialLoginData }
+                            };
                     switch (e.Status)
                     {
                         case FacebookActionStatus.Completed:
                             var facebookProfile = await Task.Run(() => JsonConvert.DeserializeObject<FacebookProfile>(e.Data));
-                            var socialLoginData = new NetworkAuthData
-                            {
-                                Email = facebookProfile.Email,
-                                Name = $"{facebookProfile.FirstName} {facebookProfile.LastName}",
-                                Id = facebookProfile.Id,
-                                Picture = "http://graph.facebook.com/" + facebookProfile.Id + "/picture?type=normal"
-                            };
-
-                            var navigationParamss = new NavigationParameters
-                            {
-                                { "NetworkAuthData", socialLoginData }
-                            };
-                            await _navigationService.NavigateAsync("MainPage", navigationParams);
-
+                            //var socialLoginData = new NetworkAuthData
+                            //{
+                            //    Email = facebookProfile.Email,
+                            //    Name = $"{facebookProfile.FirstName}",
+                            //    LastName = $"{facebookProfile.LastName}",
+                            //    Id = facebookProfile.Id,
+                            //    Picture = "http://graph.facebook.com/" + facebookProfile.Id + "/picture?type=normal"
+                            //};
+                            
+                            
+                            await _navigationService.NavigateAsync("DashboardPage", navigationParams);
                             break;
                         case FacebookActionStatus.Canceled:
+                            await _navigationService.NavigateAsync("DashboardPage", navigationParams);
                             break;
                     }
 

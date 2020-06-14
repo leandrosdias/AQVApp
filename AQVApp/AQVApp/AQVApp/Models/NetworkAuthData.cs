@@ -13,5 +13,6 @@ namespace AQVApp.Models
         public string Background { get; set; }
         public string Foreground { get; set; }
         public string Email { get; internal set; }
+        public string LastName { get; internal set; }
     }
 }

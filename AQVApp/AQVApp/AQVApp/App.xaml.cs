@@ -37,6 +37,9 @@ namespace AQVApp
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
             containerRegistry.RegisterForNavigation<MapPage, MapPageViewModel>();
             containerRegistry.RegisterForNavigation<DashboardPage, DashboardPageViewModel>();
+            containerRegistry.RegisterForNavigation<PlanningPage, PlanningPageViewModel>();
+            containerRegistry.RegisterForNavigation<PlanningDetailPage, PlanningDetailPageViewModel>();
+            containerRegistry.RegisterForNavigation<RouteDetailPage, RouteDetailPageViewModel>();
         }
     }
 }

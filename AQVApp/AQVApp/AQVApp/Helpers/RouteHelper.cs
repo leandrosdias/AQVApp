@@ -129,5 +129,62 @@ namespace AQVApp.Helpers
             return webAddress + wayPoints + "&key=AIzaSyDNaB0zBNVbJC0qYptExly2uJmSiK703uo";
         }
 
+        public static double toRadians(double angleIn10thofaDegree)
+        {
+            return (angleIn10thofaDegree * Math.PI) / 180;
+        }
+
+        public static double GetDistance(Position start, Position end)
+        {
+            return GetDistance(start.Latitude, end.Latitude, start.Longitude, end.Longitude);
+        }
+
+        public static double GetDistance(double lat1, double lat2, double lon1, double lon2)
+        {
+            lon1 = toRadians(lon1);
+            lon2 = toRadians(lon2);
+            lat1 = toRadians(lat1);
+            lat2 = toRadians(lat2);
+
+            double dlon = lon2 - lon1;
+            double dlat = lat2 - lat1;
+            double a = Math.Pow(Math.Sin(dlat / 2), 2) +
+                       Math.Cos(lat1) * Math.Cos(lat2) *
+                       Math.Pow(Math.Sin(dlon / 2), 2);
+
+            double c = 2 * Math.Asin(Math.Sqrt(a));
+
+            double r = 6371;
+
+            return (c * r)*700;
+        }
+
+        public static Position GetCenterPosition(Position start, Position end)
+        {
+            var diffLat = Math.Abs((start.Latitude - end.Latitude) / 2);
+            var diffLong = Math.Abs((start.Longitude - end.Longitude) / 2);
+
+            double latResult;
+            if (start.Latitude > end.Latitude)
+            {
+                latResult = start.Latitude - diffLat;
+            }
+            else
+            {
+                latResult = start.Latitude + diffLat;
+            }
+
+            double longResult;
+            if (start.Longitude > end.Longitude)
+            {
+                longResult = start.Longitude - diffLong;
+            }
+            else
+            {
+                longResult = start.Longitude + diffLong;
+            }
+
+            return new Position(latResult, longResult);
+        }
     }
 }

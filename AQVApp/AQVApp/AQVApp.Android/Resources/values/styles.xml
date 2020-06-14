@@ -28,7 +28,7 @@
     <item name="colorAccent">#FF4081</item>
   </style>
   
-  <string name="facebook_app_name">XamarinLeandro</string>
-  <string name="facebook_app_id">1796196397363237</string>
-  <string name="fb_login_protocol_scheme">fb1796196397363237</string>
+  <string name="facebook_app_name">Truck Seguro</string>
+  <string name="facebook_app_id">1021256891626886</string>
+  <string name="fb_login_protocol_scheme">fb1021256891626886</string>
 </resources>

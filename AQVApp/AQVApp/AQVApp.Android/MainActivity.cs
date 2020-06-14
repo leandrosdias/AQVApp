@@ -23,7 +23,7 @@ namespace AQVApp.Droid
             base.OnCreate(savedInstanceState);
 
             FacebookClientManager.Initialize(this);
-
+            Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             // Override default BitmapDescriptorFactory by your implementation. 
