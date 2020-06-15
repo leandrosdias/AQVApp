@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AQVApp.Views.RouteDetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:prism="http://prismlibrary.com"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="#6C63FF"
+    NavigationPage.HasNavigationBar="False">
+    <pancake:PancakeView
+        Margin="0,74,0,0"
+        BackgroundColor="White"
+        CornerRadius="30,30,0,0">
+        <StackLayout>
+            <Label
+                FontAttributes="Bold"
+                FontFamily="{StaticResource Poppins}"
+                FontSize="23"
+                HeightRequest="104"
+                HorizontalTextAlignment="Center"
+                Text="Planejamento da Viagem"
+                TextColor="#6C63FF"
+                VerticalOptions="Start"
+                VerticalTextAlignment="Center" />
+
+            <AbsoluteLayout
+                BackgroundColor="#2E5BFF"
+                HorizontalOptions="FillAndExpand"
+                Opacity="0.08">
+                <BoxView
+                    BackgroundColor="#2E5BFF"
+                    HeightRequest="1"
+                    HorizontalOptions="FillAndExpand"
+                    Opacity="0.08" />
+            </AbsoluteLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <pancake:PancakeView
+                    Margin="20,20,0,0"
+                    BackgroundColor="LightGray"
+                    CornerRadius="50"
+                    HeightRequest="58"
+                    HorizontalOptions="Start"
+                    WidthRequest="58">
+                    <Image Margin="15,15,15,15">
+                        <Image.Source>
+                            <FontImageSource
+                                FontFamily="{StaticResource FontAwesome}"
+                                Glyph="&#xf3c5;"
+                                Color="#33AC2E" />
+                        </Image.Source>
+                    </Image>
+                </pancake:PancakeView>
+                <AbsoluteLayout
+                    Margin="0,49,0,23"
+                    BackgroundColor="LightGray"
+                    HorizontalOptions="FillAndExpand" />
+
+                <pancake:PancakeView
+                    Margin="0,20,80,0"
+                    BackgroundColor="LightGray"
+                    CornerRadius="50"
+                    HeightRequest="58"
+                    HorizontalOptions="Start"
+                    WidthRequest="58">
+                    <Image Margin="15,15,15,15">
+                        <Image.Source>
+                            <FontImageSource
+                                FontFamily="{StaticResource FontAwesome}"
+                                Glyph="&#xf00c;"
+                                Color="#2E5BFF" />
+                        </Image.Source>
+                    </Image>
+                </pancake:PancakeView>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <StackLayout>
+                    <Label
+                        Margin="20,10,0,0"
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource Rubik}"
+                        FontSize="15"
+                        HeightRequest="22"
+                        Text="Plastiban Indústria"
+                        TextColor="#2E384D"
+                        WidthRequest="141" />
+                    <Label
+                        Margin="20,3,0,0"
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource Rubik}"
+                        FontSize="15"
+                        HeightRequest="22"
+                        Text="Planalto - PR"
+                        TextColor="#8798AD"
+                        WidthRequest="141" />
+
+                </StackLayout>
+                <StackLayout>
+                    <Label
+                        Margin="80,10,0,0"
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource Rubik}"
+                        FontSize="15"
+                        HeightRequest="22"
+                        Text="FRIGOESTE"
+                        TextColor="#2E384D"
+                        WidthRequest="141" />
+                    <Label
+                        Margin="80,3,0,0"
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource Rubik}"
+                        FontSize="15"
+                        HeightRequest="22"
+                        Text="Campo Grande - MS"
+                        TextColor="#8798AD"
+                        WidthRequest="141" />
+
+                </StackLayout>
+            </StackLayout>
+
+            <AbsoluteLayout
+                Margin="0,30,0,0"
+                BackgroundColor="#2E5BFF"
+                HorizontalOptions="FillAndExpand"
+                Opacity="0.08">
+                <BoxView
+                    BackgroundColor="#2E5BFF"
+                    HeightRequest="1"
+                    HorizontalOptions="FillAndExpand"
+                    Opacity="0.08" />
+            </AbsoluteLayout>
+
+            <StackLayout
+                Margin="20,40,20,20"
+                Orientation="Horizontal"
+                Spacing="20">
+                <StackLayout>
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource Rubik}"
+                        FontSize="18"
+                        HeightRequest="22"
+                        HorizontalTextAlignment="Center"
+                        Text="764 KM"
+                        TextColor="#2E384D"
+                        WidthRequest="141" />
+
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource Rubik}"
+                        FontSize="18"
+                        HeightRequest="22"
+                        HorizontalTextAlignment="Center"
+                        Text="Distância"
+                        TextColor="#8798AD"
+                        WidthRequest="141" />
+                </StackLayout>
+
+                <StackLayout>
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource Rubik}"
+                        FontSize="18"
+                        HeightRequest="22"
+                        HorizontalTextAlignment="Center"
+                        Text="12h 10min"
+                        TextColor="#2E384D"
+                        WidthRequest="141" />
+
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource Rubik}"
+                        FontSize="18"
+                        HeightRequest="22"
+                        HorizontalTextAlignment="Center"
+                        Text="Tempo"
+                        TextColor="#8798AD"
+                        WidthRequest="141" />
+                </StackLayout>
+                <StackLayout>
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource Rubik}"
+                        FontSize="18"
+                        HeightRequest="22"
+                        HorizontalTextAlignment="Center"
+                        Text="Céu Aberto"
+                        TextColor="#2E384D"
+                        WidthRequest="141" />
+
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource Rubik}"
+                        FontSize="18"
+                        HeightRequest="22"
+                        HorizontalTextAlignment="Center"
+                        Text="Clima"
+                        TextColor="#8798AD"
+                        WidthRequest="141" />
+                </StackLayout>
+            </StackLayout>
+
+            <AbsoluteLayout
+                Margin="0,30,0,0"
+                BackgroundColor="#2E5BFF"
+                HorizontalOptions="FillAndExpand"
+                Opacity="0.08">
+                <BoxView
+                    BackgroundColor="#2E5BFF"
+                    HeightRequest="1"
+                    HorizontalOptions="FillAndExpand"
+                    Opacity="0.08" />
+            </AbsoluteLayout>
+
+            <pancake:PancakeView
+                Margin="30,110,20,0"
+                BackgroundColor="#6C63FF"
+                BorderColor="#6C63FF"
+                BorderThickness="1"
+                CornerRadius="4"
+                IsClippedToBounds="True">
+                <Frame BackgroundColor="#6C63FF">
+                    <Label
+                        BackgroundColor="#6C63FF"
+                        FontFamily="{StaticResource Avenir}"
+                        FontSize="20"
+                        HorizontalTextAlignment="Center"
+                        Text="Ver no Mapa"
+                        TextColor="White" />
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding MapCommand}" />
+                    </Frame.GestureRecognizers>
+
+                </Frame>
+            </pancake:PancakeView>
+        </StackLayout>
+    </pancake:PancakeView>
+</ContentPage>

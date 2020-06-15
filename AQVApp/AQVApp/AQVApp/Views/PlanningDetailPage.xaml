@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AQVApp.Views.PlanningDetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:AQVApp.Custom"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:prism="http://prismlibrary.com"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="#6C63FF"
+    NavigationPage.HasNavigationBar="False">
+    <pancake:PancakeView
+        Margin="0,74,0,0"
+        BackgroundColor="White"
+        CornerRadius="30,30,0,0">
+        <StackLayout>
+            <Label
+                FontAttributes="Bold"
+                FontFamily="{StaticResource Poppins}"
+                FontSize="23"
+                HeightRequest="104"
+                HorizontalTextAlignment="Center"
+                Text="Detalhes do Planejamento"
+                TextColor="#6C63FF"
+                VerticalOptions="Start"
+                VerticalTextAlignment="Center" />
+            <Label
+                Margin="33,30,29,0"
+                FontAttributes="Bold"
+                FontFamily="{StaticResource Avenir}"
+                FontSize="12"
+                Text="Origem"
+                TextColor="Black" />
+            <pancake:PancakeView
+                Margin="30,0,29,0"
+                BorderColor="#6C63FF"
+                BorderThickness="1"
+                CornerRadius="4"
+                IsClippedToBounds="True">
+                <StackLayout
+                    Margin="10,0,0,0"
+                    HeightRequest="56"
+                    Orientation="Horizontal">
+                    <local:CustomEntry
+                        ClearButtonVisibility="WhileEditing"
+                        FontFamily="{StaticResource Avenir}"
+                        FontSize="15"
+                        Text="{Binding Source}"
+                        WidthRequest="290" />
+                    <Image Source="mic1.png" />
+                </StackLayout>
+            </pancake:PancakeView>
+
+            <Label
+                Margin="33,15,29,0"
+                FontAttributes="Bold"
+                FontFamily="{StaticResource Avenir}"
+                FontSize="12"
+                Text="Destino"
+                TextColor="Black" />
+            <pancake:PancakeView
+                Margin="30,0,29,0"
+                BorderColor="#6C63FF"
+                BorderThickness="1"
+                CornerRadius="4"
+                IsClippedToBounds="True">
+                <StackLayout
+                    Margin="10,0,0,0"
+                    HeightRequest="56"
+                    Orientation="Horizontal">
+                    <local:CustomEntry
+                        ClearButtonVisibility="WhileEditing"
+                        FontFamily="{StaticResource Avenir}"
+                        FontSize="15"
+                        Text="{Binding Target}"
+                        WidthRequest="290" />
+                    <Image Source="mic1.png" />
+                </StackLayout>
+            </pancake:PancakeView>
+
+            <Label
+                Margin="33,15,29,0"
+                FontAttributes="Bold"
+                FontFamily="{StaticResource Avenir}"
+                FontSize="12"
+                Text="Peso Total"
+                TextColor="Black" />
+            <pancake:PancakeView
+                Margin="30,0,29,0"
+                BorderColor="#6C63FF"
+                BorderThickness="1"
+                CornerRadius="4"
+                IsClippedToBounds="True">
+                <StackLayout
+                    Margin="10,0,0,0"
+                    HeightRequest="56"
+                    Orientation="Horizontal">
+                    <local:CustomEntry
+                        ClearButtonVisibility="WhileEditing"
+                        FontFamily="{StaticResource Avenir}"
+                        FontSize="15"
+                        Text="{Binding Weight}"
+                        WidthRequest="290" />
+                    <Image Source="mic1.png" />
+                </StackLayout>
+            </pancake:PancakeView>
+
+            <Label
+                Margin="33,15,29,0"
+                FontAttributes="Bold"
+                FontFamily="{StaticResource Avenir}"
+                FontSize="12"
+                Text="Carga possui horário?"
+                TextColor="Black" />
+            <pancake:PancakeView
+                Margin="30,0,29,0"
+                BorderColor="#6C63FF"
+                BorderThickness="1"
+                CornerRadius="4"
+                IsClippedToBounds="True">
+                <StackLayout
+                    Margin="10,0,0,0"
+                    HeightRequest="56"
+                    Orientation="Horizontal">
+                    <local:CustomEntry
+                        ClearButtonVisibility="WhileEditing"
+                        FontFamily="{StaticResource Avenir}"
+                        FontSize="15"
+                        Text="{Binding Hour}"
+                        WidthRequest="290" />
+                    <Image Source="mic1.png" />
+                </StackLayout>
+            </pancake:PancakeView>
+
+            <pancake:PancakeView
+                Margin="30,60,29,0"
+                BackgroundColor="#6C63FF"
+                BorderColor="#6C63FF"
+                BorderThickness="1"
+                CornerRadius="4"
+                IsClippedToBounds="True">
+                <Frame BackgroundColor="#6C63FF">
+                    <Label
+                        BackgroundColor="#6C63FF"
+                        FontFamily="{StaticResource Avenir}"
+                        FontSize="16"
+                        HorizontalTextAlignment="Center"
+                        Text="Tudo certo! Planejar viagem."
+                        TextColor="White" />
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding PlanningCommand}" />
+                    </Frame.GestureRecognizers>
+
+                </Frame>
+            </pancake:PancakeView>
+        </StackLayout>
+    </pancake:PancakeView>
+</ContentPage>

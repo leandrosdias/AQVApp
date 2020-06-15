@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication
+    x:Class="AQVApp.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:AQVApp.Converter"
+    xmlns:prism="http://prismlibrary.com">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <converters:StaticResourceConverter x:Key="cnvStaticResource" />
+
+            <OnPlatform x:Key="Poppins" x:TypeArguments="x:String">
+                <On Platform="Android">poppins-bold.ttf#Poppins Bold</On>
+                <On Platform="iOS">Poppins Bold</On>
+            </OnPlatform>
+
+            <OnPlatform x:Key="Avenir" x:TypeArguments="x:String">
+                <On Platform="Android">avenir-lt-std-35-light.otf#Avenir Lt</On>
+                <On Platform="iOS">Avenir Lt</On>
+            </OnPlatform>
+
+            <OnPlatform x:Key="Rubik" x:TypeArguments="x:String">
+                <On Platform="Android">Rubik-Regular.ttf#Rubik</On>
+                <On Platform="iOS">Rubik-Regular</On>
+            </OnPlatform>
+
+            <OnPlatform x:Key="FontAwesome" x:TypeArguments="x:String">
+                <On Platform="Android">fa-solid-900.ttf#Font Awesome 5 Free Solid</On>
+                <On Platform="iOS">Font Awesome 5 Free</On>
+            </OnPlatform>
+        </ResourceDictionary>
+        <Color x:Key="Lilas">#534ADF</Color>
+        <x:String x:Key="Marker">&#xf3c5;</x:String>
+        <x:String x:Key="Check">&#xf00c;</x:String>
+        <!--  Application resource dictionary  -->
+
+    </Application.Resources>
+</prism:PrismApplication>

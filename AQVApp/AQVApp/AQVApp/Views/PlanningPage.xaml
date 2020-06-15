@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AQVApp.Views.PlanningPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="http://prismlibrary.com"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    NavigationPage.HasNavigationBar="False">
+    <StackLayout x:Name="stPage" IsVisible="{Binding IsVisible}">
+        <Label
+            Margin="24,117,24,24"
+            FontFamily="{StaticResource Poppins}"
+            FontSize="28"
+            HorizontalTextAlignment="Center"
+            Text="{Binding Title}"
+            TextColor="#6C63FF" />
+        <Image
+            Margin="0,166,0,0"
+            IsVisible="{Binding ImageVisible}"
+            Source="Microphone.png" />
+    </StackLayout>
+</ContentPage>
