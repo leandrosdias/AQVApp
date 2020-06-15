@@ -33,4 +33,4 @@ Mapa
 
 Popup de Notificação
 
-![alt text](https://github.com/leandrosdias/AQVApp/blob/master/AQVApp/Screenshots/MapScreen.jpeg)
+![alt text](https://github.com/leandrosdias/AQVApp/blob/master/AQVApp/Screenshots/NotificationScreen.jpeg)
