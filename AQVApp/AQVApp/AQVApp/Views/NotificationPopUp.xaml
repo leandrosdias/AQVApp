@@ -53,6 +53,7 @@
                     BackgroundColor="#6C63FF"
                     FontFamily="{StaticResource Poppins}"
                     Text="OK"
+                    Clicked="Button_Clicked"
                     TextColor="White" />
             </pancake:PancakeView>
         </StackLayout>

@@ -1,4 +1,5 @@
-﻿using AQVApp.Helpers;
+﻿using AQVApp.Controllers;
+using AQVApp.Helpers;
 using AQVApp.Models;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -27,19 +28,21 @@ namespace AQVApp.ViewModels
             get { return _isVisible; }
             set { SetProperty(ref _isVisible, value); }
         }
+
+        private bool _imageVisible;
+        public bool ImageVisible
+        {
+            get { return _imageVisible; }
+            set { SetProperty(ref _imageVisible, value); }
+        }
+
+        private Route _route;
         private INavigationService _navigationService;
-        public ICommand TapCommand { get; set; }
-        private NetworkAuthData _data;
         public PlanningPageViewModel(INavigationService navigationService)
         {
             IsVisible = true;
             _navigationService = navigationService;
-            TapCommand = new Command(TapAsync);
-        }
-
-        private async void TapAsync()
-        {
-            await _navigationService.NavigateAsync("PlanningDetailPage");
+            Task.Run(ProcessConversation);
         }
 
         public void OnNavigatedFrom(INavigationParameters parameters)
@@ -49,39 +52,42 @@ namespace AQVApp.ViewModels
 
         public void OnNavigatedTo(INavigationParameters parameters)
         {
-            //var data = parameters?.GetValue<NetworkAuthData>("NetworkAuthData");
-            //_data = data;
-            Task.Run(SpeakScreenAsync);
-
-            Title = Constants.PrepareToInitializeRoute();
+            ImageVisible = false;
         }
 
-        private async Task SpeakScreenAsync()
+        public async Task ProcessConversation()
         {
-            try
+            await SpeechHelper.QuestionSource();
+            var source = await SpeechHelper.GetUserResponseAsync();
+
+            await SpeechHelper.QuestionTarget();
+            var target = await SpeechHelper.GetUserResponseAsync();
+
+            await SpeechHelper.QuestionWeight();
+            var weight = await SpeechHelper.GetUserResponseAsync();
+
+            await SpeechHelper.QuestionType();
+            var type = await SpeechHelper.GetUserResponseAsync();
+
+            await SpeechHelper.QuestionSource();
+            var isLoadHour = await SpeechHelper.GetIntentByResponseAsync() == SpeechHelper.Intent.AfirmativeAnswer;
+
+            _route = new Route
             {
-                await Task.Delay(5600);
+                Source = source,
+                Target = target,
+                Weight = weight,
+                Type = type,
+                LoadHour = isLoadHour
+            };
 
-                Title = Constants.QuestionSource();
-                await Task.Delay(5000);
+          
+            var navigationParams = new NavigationParameters
+                            {
+                                { "Route", _route }
+                            };
 
-                Title = Constants.QuestionTarget();
-                await Task.Delay(5000);
-
-                Title = Constants.QuestionWeight();
-                await Task.Delay(5200);
-
-                Title = Constants.QuestionHour();
-                await Task.Delay(1000);
-
-                //await _navigationService.NavigateAsync("PlanningDetailPage");
-            }
-            catch (Exception e)
-            {
-
-            }
-
+            await _navigationService.NavigateAsync("PlanningDetailPage", navigationParams);
         }
-
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AQVApp.Helpers;
+using AQVApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -9,8 +10,10 @@ namespace AQVApp.Views
 {
     public partial class MapPage : ContentPage
     {
-        public MapPage()
+        private Route _route;
+        public MapPage(Route route)
         {
+            _route = route;
             InitializeComponent();
 
             map.MyLocationEnabled = true;
@@ -28,8 +31,8 @@ namespace AQVApp.Views
         {
             try
             {
-                string source = "Plastiplan Industria e Embalagem";
-                string target = "Frigoeste";
+                string source = _route.Source;
+                string target = _route.Target;
                 var route = await RouteHelper.GetGoogleDirectionsAsync(source, target);
 
                 var leg = route.routes[0].legs[0];
@@ -48,25 +51,19 @@ namespace AQVApp.Views
                     Label = target,
                 };
 
-                Pin posto = new Pin()
+                foreach(var notification in _route.Notifications)
                 {
-                    Type = PinType.Generic,
-                    Position = new Position(-20.675093, -54.557254),
-                    Label = "Posto Platinão",
-                };
-
-                Pin restaurante = new Pin()
-                {
-                    Type = PinType.Generic,
-                    Position = new Position(-23.493388, -54.185739),
-                    Label = "Restaurante Sabor Mineiro",
-                };
-
+                    var pin = new Pin()
+                    {
+                        Type = PinType.Generic,
+                        Position = new Position(notification.Lat, notification.Long),
+                        Label = notification.Label,
+                    };
+                    map.Pins.Add(pin);
+                }
 
                 map.Pins.Add(start);
                 map.Pins.Add(end);
-                map.Pins.Add(restaurante);
-                map.Pins.Add(posto);
 
                 var centerPosition = RouteHelper.GetCenterPosition(start.Position, end.Position);
                 map.MoveToRegion(MapSpan.FromCenterAndRadius(centerPosition, Distance.FromMeters(RouteHelper.GetDistance(start.Position, end.Position))), true);

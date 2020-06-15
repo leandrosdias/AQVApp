@@ -1,4 +1,5 @@
-﻿using Rg.Plugins.Popup.Pages;
+﻿using Rg.Plugins.Popup.Extensions;
+using Rg.Plugins.Popup.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,11 @@ namespace AQVApp.Views
             base.OnAppearing();
 
             await Helpers.SpeechHelper.SpeakNow(_description);
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PopPopupAsync().ConfigureAwait(true);
         }
     }
 }

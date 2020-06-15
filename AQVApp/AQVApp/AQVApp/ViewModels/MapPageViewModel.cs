@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using AQVApp.Models;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
@@ -10,14 +11,8 @@ using Xamarin.Forms;
 
 namespace AQVApp.ViewModels
 {
-    public class MapPageViewModel : BindableBase
+    public class MapPageViewModel : BindableBase, INavigatedAware
     {
-        public class Notification
-        {
-            public string Hour { get; set; }
-            public string Description { get; set; }
-        }
-
         private ObservableCollection<Notification> _notifications;
         public ObservableCollection<Notification> Notifications
         {
@@ -29,12 +24,6 @@ namespace AQVApp.ViewModels
         private INavigationService _navigationService;
         public MapPageViewModel(INavigationService navigationService)
         {
-            Notifications = new ObservableCollection<Notification>
-            {
-                new Notification{Hour="12:00", Description="Sugestão de parada para almoço por 60 minutos no restaurante "},
-                new Notification{Hour="19:30", Description="Sugestão de parada no posto Platinão há 37 KM por restrição horário de Campo Grande"},
-            };
-
             BackCommand = new Command(BackScreenAsync);
             _navigationService = navigationService;
         }
@@ -42,6 +31,22 @@ namespace AQVApp.ViewModels
         private async void BackScreenAsync()
         {
             await _navigationService.NavigateAsync("RouteDetailPage");
+        }
+
+        public void OnNavigatedFrom(INavigationParameters parameters)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnNavigatedTo(INavigationParameters parameters)
+        {
+            Notifications = new ObservableCollection<Notification>();
+            var plannedRoute = parameters?.GetValue<Route>("PlannedRoute");
+
+            foreach(var notification in plannedRoute.Notifications)
+            {
+                Notifications.Add(notification);
+            }
         }
     }
 }

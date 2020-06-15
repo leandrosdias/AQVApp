@@ -6,19 +6,17 @@
     xmlns:prism="http://prismlibrary.com"
     prism:ViewModelLocator.AutowireViewModel="True"
     NavigationPage.HasNavigationBar="False">
-    <Frame>
-        <StackLayout x:Name="stPage" IsVisible="{Binding IsVisible}">
-            <Label
-                Margin="24,117,24,24"
-                FontFamily="{StaticResource Poppins}"
-                FontSize="28"
-                HorizontalTextAlignment="Center"
-                Text="{Binding Title}"
-                TextColor="#6C63FF" />
-            <Image Margin="0,166,0,0" Source="Microphone.png" />
-        </StackLayout>
-        <Frame.GestureRecognizers>
-            <TapGestureRecognizer Command="{Binding TapCommand}" />
-        </Frame.GestureRecognizers>
-    </Frame>
+    <StackLayout x:Name="stPage" IsVisible="{Binding IsVisible}">
+        <Label
+            Margin="24,117,24,24"
+            FontFamily="{StaticResource Poppins}"
+            FontSize="28"
+            HorizontalTextAlignment="Center"
+            Text="{Binding Title}"
+            TextColor="#6C63FF" />
+        <Image
+            Margin="0,166,0,0"
+            IsVisible="{Binding ImageVisible}"
+            Source="Microphone.png" />
+    </StackLayout>
 </ContentPage>

@@ -41,32 +41,27 @@ namespace AQVApp.ViewModels
                 {
                     if (e == null) return;
 
-                    var socialLoginData = new NetworkAuthData
-                    {
-                        Name = $"Cleiton",
-                    };
-                    var navigationParams = new NavigationParameters
-                            {
-                                { "NetworkAuthData", socialLoginData }
-                            };
                     switch (e.Status)
                     {
                         case FacebookActionStatus.Completed:
                             var facebookProfile = await Task.Run(() => JsonConvert.DeserializeObject<FacebookProfile>(e.Data));
-                            //var socialLoginData = new NetworkAuthData
-                            //{
-                            //    Email = facebookProfile.Email,
-                            //    Name = $"{facebookProfile.FirstName}",
-                            //    LastName = $"{facebookProfile.LastName}",
-                            //    Id = facebookProfile.Id,
-                            //    Picture = "http://graph.facebook.com/" + facebookProfile.Id + "/picture?type=normal"
-                            //};
-                            
-                            
+                            var socialLoginData = new NetworkAuthData
+                            {
+                                Email = facebookProfile.Email,
+                                Name = $"{facebookProfile.FirstName}",
+                                LastName = $"{facebookProfile.LastName}",
+                                Id = facebookProfile.Id,
+                                Picture = "http://graph.facebook.com/" + facebookProfile.Id + "/picture?type=normal"
+                            };
+
+                            var navigationParams = new NavigationParameters
+                            {
+                                { "NetworkAuthData", socialLoginData }
+                            };
+
                             await _navigationService.NavigateAsync("DashboardPage", navigationParams);
                             break;
                         case FacebookActionStatus.Canceled:
-                            await _navigationService.NavigateAsync("DashboardPage", navigationParams);
                             break;
                     }
 

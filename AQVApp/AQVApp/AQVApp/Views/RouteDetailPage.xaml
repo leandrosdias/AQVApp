@@ -136,91 +136,72 @@
                 Margin="20,40,20,20"
                 Orientation="Horizontal"
                 Spacing="20">
-                <Frame
-                    Padding="0,20,0,0"
-                    BackgroundColor="Transparent"
-                    IsClippedToBounds="True">
-                    <StackLayout>
-                        <Label
-                            FontAttributes="Bold"
-                            FontFamily="{StaticResource Rubik}"
-                            FontSize="18"
-                            HeightRequest="22"
-                            HorizontalTextAlignment="Center"
-                            Text="764 KM"
-                            TextColor="#2E384D"
-                            WidthRequest="141" />
+                <StackLayout>
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource Rubik}"
+                        FontSize="18"
+                        HeightRequest="22"
+                        HorizontalTextAlignment="Center"
+                        Text="764 KM"
+                        TextColor="#2E384D"
+                        WidthRequest="141" />
 
-                        <Label
-                            FontAttributes="Bold"
-                            FontFamily="{StaticResource Rubik}"
-                            FontSize="18"
-                            HeightRequest="22"
-                            HorizontalTextAlignment="Center"
-                            Text="Distância"
-                            TextColor="#8798AD"
-                            WidthRequest="141" />
-                    </StackLayout>
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding TapCommand}" />
-                    </Frame.GestureRecognizers>
-                </Frame>
-                <Frame Padding="0,20,0,0" BackgroundColor="Transparent">
-                    <StackLayout>
-                        <Label
-                            FontAttributes="Bold"
-                            FontFamily="{StaticResource Rubik}"
-                            FontSize="18"
-                            HeightRequest="22"
-                            HorizontalTextAlignment="Center"
-                            Text="12h 10min"
-                            TextColor="#2E384D"
-                            WidthRequest="141" />
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource Rubik}"
+                        FontSize="18"
+                        HeightRequest="22"
+                        HorizontalTextAlignment="Center"
+                        Text="Distância"
+                        TextColor="#8798AD"
+                        WidthRequest="141" />
+                </StackLayout>
 
-                        <Label
-                            FontAttributes="Bold"
-                            FontFamily="{StaticResource Rubik}"
-                            FontSize="18"
-                            HeightRequest="22"
-                            HorizontalTextAlignment="Center"
-                            Text="Tempo"
-                            TextColor="#8798AD"
-                            WidthRequest="141" />
-                    </StackLayout>
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding TapCommand1}" />
-                    </Frame.GestureRecognizers>
-                </Frame>
+                <StackLayout>
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource Rubik}"
+                        FontSize="18"
+                        HeightRequest="22"
+                        HorizontalTextAlignment="Center"
+                        Text="12h 10min"
+                        TextColor="#2E384D"
+                        WidthRequest="141" />
 
-                <Frame Padding="0,20,0,0" BackgroundColor="Transparent">
-                    <StackLayout>
-                        <Label
-                            FontAttributes="Bold"
-                            FontFamily="{StaticResource Rubik}"
-                            FontSize="18"
-                            HeightRequest="22"
-                            HorizontalTextAlignment="Center"
-                            Text="Céu Aberto"
-                            TextColor="#2E384D"
-                            WidthRequest="141" />
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource Rubik}"
+                        FontSize="18"
+                        HeightRequest="22"
+                        HorizontalTextAlignment="Center"
+                        Text="Tempo"
+                        TextColor="#8798AD"
+                        WidthRequest="141" />
+                </StackLayout>
+                <StackLayout>
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource Rubik}"
+                        FontSize="18"
+                        HeightRequest="22"
+                        HorizontalTextAlignment="Center"
+                        Text="Céu Aberto"
+                        TextColor="#2E384D"
+                        WidthRequest="141" />
 
-                        <Label
-                            FontAttributes="Bold"
-                            FontFamily="{StaticResource Rubik}"
-                            FontSize="18"
-                            HeightRequest="22"
-                            HorizontalTextAlignment="Center"
-                            Text="Clima"
-                            TextColor="#8798AD"
-                            WidthRequest="141" />
-                    </StackLayout>
-
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding TapCommand2}" />
-                    </Frame.GestureRecognizers>
-                </Frame>
-
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource Rubik}"
+                        FontSize="18"
+                        HeightRequest="22"
+                        HorizontalTextAlignment="Center"
+                        Text="Clima"
+                        TextColor="#8798AD"
+                        WidthRequest="141" />
+                </StackLayout>
             </StackLayout>
+
             <AbsoluteLayout
                 Margin="0,30,0,0"
                 BackgroundColor="#2E5BFF"

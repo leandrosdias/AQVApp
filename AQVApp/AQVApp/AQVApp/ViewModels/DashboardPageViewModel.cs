@@ -1,4 +1,5 @@
-﻿using AQVApp.Models;
+﻿using AQVApp.Controllers;
+using AQVApp.Models;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -41,11 +42,6 @@ namespace AQVApp.ViewModels
         public ICommand NewPlanningCommand { get; set; }
         public DashboardPageViewModel(INavigationService navigationService)
         {
-            Bubbles = new ObservableCollection<BubbleHeader>()
-            {
-                new BubbleHeader{Icon="Marker", Title = "0 km", Description="Distância Percorrida", IconColor="#00C1D4"},
-                new BubbleHeader{Icon="Check", Title = "0", Description="Viagens Finalizadas", IconColor="#33AC2E"},
-            };
             NewPlanningCommand = new Command(GoToPlanningScreenAsync);
             _navigationService = navigationService;
         }
@@ -59,6 +55,13 @@ namespace AQVApp.ViewModels
             var data = parameters?.GetValue<NetworkAuthData>("NetworkAuthData");
             _data = data;
             HelloString = $"Olá, {data?.Name}!";
+
+            var user = UserController.GetUserByEmail(data.Email);
+            Bubbles = new ObservableCollection<BubbleHeader>()
+            {
+                new BubbleHeader{Icon="Marker", Title = $"{user.TotalDistance} km", Description="Distância Percorrida", IconColor="#00C1D4"},
+                new BubbleHeader{Icon="Check", Title = user.TotalTrip, Description="Viagens Finalizadas", IconColor="#33AC2E"},
+            };
         }
 
         private async void GoToPlanningScreenAsync()

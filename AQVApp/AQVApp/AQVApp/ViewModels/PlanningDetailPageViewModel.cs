@@ -1,4 +1,6 @@
-﻿using AQVApp.Helpers;
+﻿using AQVApp.Controllers;
+using AQVApp.Helpers;
+using AQVApp.Models;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -10,7 +12,7 @@ using Xamarin.Forms;
 
 namespace AQVApp.ViewModels
 {
-    public class PlanningDetailPageViewModel : BindableBase
+    public class PlanningDetailPageViewModel : BindableBase, INavigatedAware
     {
         private string _source;
         public string Source
@@ -40,23 +42,37 @@ namespace AQVApp.ViewModels
             set { SetProperty(ref _hour, value); }
         }
 
-
+        private Route _route;
         private INavigationService _navigationService;
         public ICommand PlanningCommand { get; set; }
         public PlanningDetailPageViewModel(INavigationService navigationService)
         {
             PlanningCommand = new Command(PlanningAsync);
             _navigationService = navigationService;
-
-            Source = Constants.AnswerSource();
-            Target = Constants.AnswerTarget();
-            Weight = Constants.AnswerWeight();
-            Hour = "Não";
         }
 
         private async void PlanningAsync()
         {
-            await _navigationService.NavigateAsync("RouteDetailPage", animated: false);
+            var plannedRoute = RouteController.PlanningRoute(_route);
+            var navigationParams = new NavigationParameters
+                            {
+                                { "PlannedRoute", plannedRoute }
+                            };
+            await _navigationService.NavigateAsync("RouteDetailPage", navigationParams, animated: false);
+        }
+
+        public void OnNavigatedFrom(INavigationParameters parameters)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnNavigatedTo(INavigationParameters parameters)
+        {
+            _route = parameters?.GetValue<Route>("Route");
+            Source = _route.Source;
+            Target = _route.Target;
+            Weight = _route.Weight;
+            Hour = _route.LoadHour ? "Sim" : "Não";
         }
     }
 }
