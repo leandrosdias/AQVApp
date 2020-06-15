@@ -30,3 +30,7 @@ Tela da Viagem
 Mapa
 
 ![alt text](https://github.com/leandrosdias/AQVApp/blob/master/AQVApp/Screenshots/MapScreen.jpeg)
+
+Popup de Notificação
+
+![alt text](https://github.com/leandrosdias/AQVApp/blob/master/AQVApp/Screenshots/MapScreen.jpeg)
